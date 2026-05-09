@@ -1,0 +1,244 @@
+/* Тут розпочинається найцікавіше, css. Це базові налаштування для мого сайту, color. Можна змінити щось на помаранчевий або інший колір */
+:root {
+    --mars-red: #ff3333;
+    --mars-red-dark: #990000;
+    --mars-glow: rgba(255, 51, 51, 0.4);
+    --bg-dark: #0d0000;
+    --bg-card: rgba(255, 51, 51, 0.05);
+    --text: #d0d0d0;
+    --text-dim: #888;
+}
+
+/* box-sizing: border-box;: Це правило каже браузеру, що рамки та відступи мають бути всередині блоку, а не роздувати його.scroll-behavior: smooth;: Робить перехід по меню плавним. Коли людина тисне, наприклад, «Технології», сайт не різко «стрибає», а м'яко прокручується вниз. Це додає сайту плавності. */
+* {
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg-dark);
+    color: var(--text);
+    font-family: 'Exo 2', sans-serif; /* Шрифт який мені сподобався, відступи, курсор, увесь фон тепер майже чорний */
+    line-height: 1.6;
+    cursor: crosshair;
+}
+
+h1, h2, h3, .top-nav {
+    font-family: 'Orbitron', sans-serif; /* Космічний шрифт для моїх заголовків, дуже гарний */
+}
+/* Цей блок відповідає за те, щоб контент сайту не розповзався на весь екран і завжди був рівно по центру. Виходить, на телефони сайт підходить */
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Це навігація, закріплена позиція навігації, кольор чорний, а також z-index 100 (навігація йде майже поверх всього, наприклад якщо б сайт z-index 111, а нав z-index 100, то сайт був би вище й перекривав нав) */
+.top-nav {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: rgba(0, 0, 0, 0.9);
+    border-bottom: 1px solid var(--mars-red);
+    backdrop-filter: blur(10px);
+}
+
+/* .nav-container — вирівнює елементи меню в один рядок: назву — зліва, посилання — справа. */
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 0;
+}
+/* .menu a — прибирає підкреслення у посилань, фарбує їх у червоний та робить гарні відступи. */
+.menu a {
+    color: var(--mars-red);
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 12px;
+    letter-spacing: 1px;
+    transition: 0.3s;
+}
+/* .menu a:hover — змушує посилання плавно біліти та «світитися» червоним при наведенні мишки. І систему нее нагружає сильно) */
+.menu a:hover {
+    color: #fff;
+    text-shadow: 0 0 10px var(--mars-red);
+}
+
+/* Це налаштування тієї самої червоної точки ONLINE:   .status-dot — створює маленьке червоне коло зі свіченням. Правило animation змушує його постійно пульсувати.@keyframes pulse — це сценарій самої анімації: вона каже точці плавно ставати прозорою на середині циклу (50%) і знову яскравою в кінці. */
+.status-dot {
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    margin-right: 8px;
+    border-radius: 50%;
+    background: var(--mars-red);
+    box-shadow: 0 0 10px var(--mars-red);
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% { opacity: 1; }
+    50% { opacity: 0.3; }
+    100% { opacity: 1; }
+}
+
+
+.main-header {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    
+  
+    background: linear-gradient(rgba(0,0,0,0.4), rgba(13,0,0,0.8)), 
+                url('https://museum-21.su/upload/iblock/75e/vnbgq6vckaoxh9ppn77k7nrr1gfjsb3y.jpg');
+    
+    background-size: cover;
+    background-position: center;
+    border-bottom: 3px solid var(--mars-red);
+}
+
+
+
+.hero-content h1 {
+    font-size: clamp(40px, 10vw, 80px);
+    margin-bottom: 10px;
+    color: #fff;
+    text-shadow: 0 0 30px var(--mars-glow);
+}
+
+.hero-subtitle {
+    font-size: 1.2rem;
+    color: var(--mars-red);
+    letter-spacing: 2px;
+}
+
+.my-button {
+    margin-top: 30px;
+    padding: 15px 40px;
+    background: var(--mars-red);
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+    border: 2px solid transparent;
+    transition: 0.3s;
+}
+
+.my-button:hover {
+    background: transparent;
+    color: var(--mars-red);
+    border-color: var(--mars-red);
+    box-shadow: 0 0 20px var(--mars-glow);
+}
+
+/* === СЕКЦІЇ ТА КАРТКИ === */
+.content-section {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 50px;
+    letter-spacing: 5px;
+    border-bottom: 1px solid var(--bg-card);
+    display: table;
+    margin: 0 auto 50px;
+}
+
+.tech-box {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+}
+
+.tech-card {
+    padding: 30px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 51, 51, 0.2);
+    transition: 0.4s;
+}
+
+.tech-card:hover {
+    border-color: var(--mars-red);
+    transform: translateY(-10px);
+    background: rgba(255, 51, 51, 0.1);
+}
+
+.crew-rank {
+    font-size: 10px;
+    color: var(--mars-red);
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* === ГАЛЕРЕЯ === */
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.gallery-item {
+    height: 250px;
+    overflow: hidden;
+    border: 1px solid var(--mars-red-dark);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: 0.6s;
+    filter: sepia(50%) brightness(0.8);
+}
+
+.gallery-item:hover img {
+    transform: scale(1.1);
+    filter: sepia(0%) brightness(1);
+}
+
+/* === БЛОК ЖИТТЯ (ДНЕВНИК) === */
+.facts-block {
+    padding: 80px 0;
+    background: #050000;
+}
+
+.station-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.diary-entry {
+    padding: 20px;
+    border-left: 2px solid var(--mars-red);
+    background: rgba(255,255,255, 0.02);
+}
+
+.date {
+    color: var(--mars-red);
+    font-size: 12px;
+}
+
+/* === ФУТЕР === */
+.footer {
+    padding: 60px 0;
+    text-align: center;
+    border-top: 1px solid var(--mars-red-dark);
+    background: #000;
+}
+
+/* Адаптивність для мобільних пристроїв */
+@media (max-width: 768px) {
+    .nav-container { flex-direction: column; gap: 10px; }
+    .menu a { margin: 0 10px; font-size: 10px; }
+    .hero-content h1 { font-size: 40px; }
+}
