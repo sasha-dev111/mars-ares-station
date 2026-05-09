@@ -242,3 +242,15 @@ h1, h2, h3, .top-nav {
     .menu a { margin: 0 10px; font-size: 10px; }
     .hero-content h1 { font-size: 40px; }
 }
+
+
+/*також в кінці вирішив вирівняти блок з архітектором  */
+.tech-card {
+    padding: 30px;
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 51, 51, 0.2);
+    transition: 0.4s;
+
+    text-align: center;
+}
+/*от і все. було важко, але дуже цікаво!*/
